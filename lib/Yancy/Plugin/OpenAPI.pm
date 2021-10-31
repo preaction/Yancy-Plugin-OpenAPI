@@ -1,5 +1,5 @@
 package Yancy::Plugin::OpenAPI;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 # ABSTRACT: Generate an OpenAPI spec and API for a Yancy schema
 
 =head1 SYNOPSIS
