@@ -4,13 +4,57 @@ Yancy::Plugin::OpenAPI - Generate an OpenAPI spec and API for a Yancy schema
 
 # VERSION
 
-version 0.001
+version 0.002
 
 # SYNOPSIS
 
+    use Mojolicious::Lite;
+    plugin Yancy => 'sqlite:data.db';
+    plugin OpenAPI => { route => '/api' };
+    app->start;
+
 # DESCRIPTION
 
+This plugin generates an OpenAPI specification from your database
+schema. The generated spec has endpoints to create, read, update,
+delete, and search for items in your database.
+
+# CONFIGURATION
+
+These configuration keys can be part of the hash reference passed to the
+`plugin` call.
+
+## route
+
+The base route path for the generated API. Can be a string or
+a [Mojolicious::Routes](https://metacpan.org/pod/Mojolicious::Routes) object.
+
+## title
+
+The title of the API, used in the OpenAPI spec. See also ["info"](#info).
+
+## info
+
+The `info` section of the OpenAPI spec. A hash reference.
+
+## host
+
+The host key of the OpenAPI spec. Defaults to the value of
+["hostname" in Sys::Hostname](https://metacpan.org/pod/Sys::Hostname#hostname).
+
+## model
+
+The [Yancy::Model](https://metacpan.org/pod/Yancy::Model) object to use. Defaults to
+["model" in Mojolicious::Plugin::Yancy](https://metacpan.org/pod/Mojolicious::Plugin::Yancy#model).
+
+## default\_controller
+
+The default controller to use for generated API routes. Defaults to
+`yancy`, the [Yancy::Controller::Yancy](https://metacpan.org/pod/Yancy::Controller::Yancy) controller.
+
 # SEE ALSO
+
+[Mojolicious::Plugin::OpenAPI](https://metacpan.org/pod/Mojolicious::Plugin::OpenAPI), [Yancy](https://metacpan.org/pod/Yancy)
 
 # AUTHOR
 

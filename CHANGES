@@ -2,6 +2,15 @@ Changelog for Yancy-Plugin-OpenAPI
 
 {{ $NEXT }}
 
+  [Added]
+
+  - Documentation! Very important!
+
+  [Fixed]
+
+  - Removed Yancy-deprecated 'x-filter' and 'x-filter-out' keys from
+    spec.
+
 0.001     2021-10-31 16:00:06-05:00 America/Chicago
 
   Initial release.
