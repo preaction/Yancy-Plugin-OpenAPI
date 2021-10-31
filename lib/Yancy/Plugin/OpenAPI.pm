@@ -100,16 +100,6 @@ sub _openapi_spec_add_mojo {
       # are written/read from the database
       $mojo->{controller} = $config->{default_controller};
       $mojo->{schema} = $schema;
-      my @filters = (
-        @{ $pathspec->{ 'x-filter' } || [] },
-        @{ $op_spec->{ 'x-filter' } || [] },
-      );
-      $mojo->{filters} = \@filters if @filters;
-      my @filters_out = (
-        @{ $pathspec->{ 'x-filter-output' } || [] },
-        @{ $op_spec->{ 'x-filter-output' } || [] },
-      );
-      $mojo->{filters_out} = \@filters_out if @filters_out;
       $op_spec->{ 'x-mojo-to' } = $mojo;
     }
   }
