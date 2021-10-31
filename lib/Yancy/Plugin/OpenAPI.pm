@@ -4,9 +4,53 @@ our $VERSION = '0.002';
 
 =head1 SYNOPSIS
 
+  use Mojolicious::Lite;
+  plugin Yancy => 'sqlite:data.db';
+  plugin OpenAPI => { route => '/api' };
+  app->start;
+
 =head1 DESCRIPTION
 
+This plugin generates an OpenAPI specification from your database
+schema. The generated spec has endpoints to create, read, update,
+delete, and search for items in your database.
+
+=head1 CONFIGURATION
+
+These configuration keys can be part of the hash reference passed to the
+C<plugin> call.
+
+=head2 route
+
+The base route path for the generated API. Can be a string or
+a L<Mojolicious::Routes> object.
+
+=head2 title
+
+The title of the API, used in the OpenAPI spec. See also L</info>.
+
+=head2 info
+
+The C<info> section of the OpenAPI spec. A hash reference.
+
+=head2 host
+
+The host key of the OpenAPI spec. Defaults to the value of
+L<Sys::Hostname/hostname>.
+
+=head2 model
+
+The L<Yancy::Model> object to use. Defaults to
+L<Mojolicious::Plugin::Yancy/model>.
+
+=head2 default_controller
+
+The default controller to use for generated API routes. Defaults to
+C<yancy>, the L<Yancy::Controller::Yancy> controller.
+
 =head1 SEE ALSO
+
+L<Mojolicious::Plugin::OpenAPI>, L<Yancy>
 
 =cut
 
@@ -22,8 +66,8 @@ use Sys::Hostname qw( hostname );
 
 has moniker => 'openapi';
 has route =>;
-has app =>;
 has model =>;
+has app =>;
 
 sub register {
   my ( $self, $app, $config ) = @_;
